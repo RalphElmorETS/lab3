@@ -1,0 +1,7 @@
+package dt;
+
+public class TruckException extends RuntimeException {
+    public TruckException(String message) {
+        super(message);
+    }
+}
