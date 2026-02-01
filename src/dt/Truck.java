@@ -9,9 +9,13 @@ public final class Truck extends Vehicle {
     public Truck(String[] materials, long permit, String company,
                  String ownerName, String ownerAddress,
                  String brand, String model,
-                 String licencePlate, float value) {
+                 String licencePlate, float value) throws VehicleException {
 
         super(ownerName, ownerAddress, brand, model, licencePlate, value);
+
+        if (company.equals("")) {
+            throw new VehicleException("company");
+        }
 
         this.permit = permit;
         this.company = company;

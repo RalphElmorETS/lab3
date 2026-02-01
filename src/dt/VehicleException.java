@@ -1,7 +1,17 @@
 package dt;
 
-public class VehicleException extends RuntimeException {
-    public VehicleException(String message) {
-        super(message);
+public class VehicleException extends Exception {
+
+    private String parameter;
+
+    public VehicleException(String parameter) {
+
+        this.parameter = parameter;
+
     }
+
+    public String getParameter(){
+        return this.parameter;
+    }
+
 }

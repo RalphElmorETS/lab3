@@ -3,17 +3,24 @@ import dt.*;
 public class Driver {
 
     public static void main(String[] args) {
-        if (args.length > 0) {
 
-            String choix = args[0];
-            if (choix.equals("truck")) {
-                testTruck();
-            } else if (choix.equals("suv")) {
-                testSuv();
+        try {
+            if (args.length > 0) {
+                String choix = args[0];
+                if (choix.equals("truck")) {
+                    testTruck();
+                } else if (choix.equals("suv")) {
+                    testSuv();
+                }
             }
+        } catch (VehicleException e) {
+            System.out.println(
+                    "Error with Vehicle constructor parameter " + e.getParameter()
+            );
         }
     }
-static void testTruck() {
+
+static void testTruck() throws VehicleException {
 
     String[] materiaux1 = {"sand", "traffic cones"};
     String[] materiaux2 = {"sand", "traffic cones","concrete","trees","flowers"};
@@ -35,7 +42,7 @@ static void testTruck() {
 
 }
 
-    static void testSuv() {
+    static void testSuv() throws VehicleException {
 
         Suv cheapSuv = new Suv((byte) 12,(byte)4,(byte)2,"Jeanne Tremblay", "1100 Notre-Dame","Fiat","500X",
                 "ABC 123", 25000.f);

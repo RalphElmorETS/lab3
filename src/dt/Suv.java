@@ -7,7 +7,7 @@ public final class Suv extends Vehicle {
     private byte airbagCount;
 
     public Suv(byte capacity, byte childSeatCount, byte airbagCount,
-               String ownerName, String ownerAddress, String brand, String model, String licencePlate, float value) {
+               String ownerName, String ownerAddress, String brand, String model, String licencePlate, float value) throws VehicleException {
         super(ownerName, ownerAddress, brand, model, licencePlate, value);
         this.capacity = capacity;
         this.childSeatCount = childSeatCount;

@@ -12,7 +12,25 @@ public class Vehicle {
     protected float value;
 
 
-    protected Vehicle(String ownerName, String ownerAddress, String brand, String model, String licencePlate, float value) {
+    protected Vehicle(String ownerName, String ownerAddress, String brand, String model, String licencePlate, float value) throws VehicleException {
+
+        if (ownerName.equals("")) {
+            throw new VehicleException("ownerName");
+        }
+        else if (ownerAddress.equals("")) {
+            throw new VehicleException("ownerAddress");
+        }
+        else if (brand.equals("")) {
+            throw new VehicleException("brand");
+        }
+        else if (model.equals("")) {
+            throw new VehicleException("model");
+        }
+        else if (licencePlate.equals("")) {
+            throw new VehicleException("licencePlate");
+        }
+
+
         this.ownerName = ownerName;
         this.ownerAddress = ownerAddress;
         this.brand = brand;
