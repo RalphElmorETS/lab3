@@ -12,6 +12,16 @@ public class Driver {
                 } else if (choix.equals("suv")) {
                     testSuv();
                 }
+                else if (choix.equals("suv")) {
+                    String[] materiaux1 = {"sand", "traffic cones"};
+                    Truck cityTruck = new Truck(materiaux1, 1001, "Ville de Montreal",
+                            "Valerie Plante", "City Hall", "Chevrolet", "Silverado", "MTL 001", 40000.f);
+                    Suv cheapSuv = new Suv((byte) 12,(byte)4,(byte)2,"Jeanne Tremblay", "1100 Notre-Dame","Fiat","500X",
+                            "ABC 123", 25000.f);
+
+                    Vehicle[] vehicles = {cityTruck, cheapSuv};
+                    System.out.println(sumValues(vehicles));
+                }
             }
         } catch (VehicleException e) {
             System.out.println(
@@ -19,28 +29,41 @@ public class Driver {
             );
         }
     }
+    static void testTruck() throws VehicleException, TruckException {
 
-static void testTruck() throws VehicleException {
+        String[] materiaux1 = {"sand", "traffic cones"};
+        String[] materiaux2 = {"sand", "traffic cones", "concrete", "trees", "flowers"};
+        String[] materiaux3 = {"traffic cones", "sand", "wood", "furniture", "food", "ice"};
 
-    String[] materiaux1 = {"sand", "traffic cones"};
-    String[] materiaux2 = {"sand", "traffic cones","concrete","trees","flowers"};
-    String[] materiaux3 = { "traffic cones","sand","wood","furniture","food","ice"};
+        Truck cityTruck = null;
+        Truck westmountTruck = null;
+        Truck expensiveTruck = null;
 
+        try {
+            cityTruck = new Truck(materiaux1, 1001, "Ville de Montreal",
+                    "Valerie Plante", "City Hall", "Chevrolet", "Silverado", "MTL 001", 40000.f);
+            //System.out.println(cityTruck.toString());
+        } catch (TruckException e) {
+            System.out.println("Error with Truck constructor parameter " + e.getParameter());
+        }
 
-    Truck cityTruck = new Truck(materiaux1,1001,"Ville de Montreal",
-            "Valerie Plante", "City Hall", "Chevrolet","Silverado","MTL 001",40000.f);
+        try {
+            westmountTruck = new Truck(materiaux2, 2001, "Westmount",
+                    "Michelle Desjardins", "75 Belvedere", "Ford", "XLT", "WMT 100", 27000.f);
+            //System.out.println(westmountTruck.toString());
+        } catch (TruckException e) {
+            System.out.println("Error with Truck constructor parameter " + e.getParameter());
+        }
 
-    Truck westmountTruck = new Truck(materiaux2,2001,"Westmount",
-            "Michelle Desjardins", "75 Belvedere", "Ford","XLT","WMT 100",27000.f);
+        try {
+            expensiveTruck = new Truck(materiaux3, 3003, "Griffintown",
+                    "Jean Montagne", "1122 Peel", "Toyota", "Tundra", "RST 002", 45000.f);
+            //System.out.println(expensiveTruck.toString());
+        } catch (TruckException e) {
+            System.out.println("Error with Truck constructor parameter " + e.getParameter());
+        }
 
-    Truck expensiveTruck = new Truck(materiaux3,3003,"Griffintown",
-            "Jean Montagne", "1122 Peel", "Toyota","Tundra","RST 002",45000.f);
-
-    System.out.println(cityTruck.toString());
-    System.out.println(westmountTruck.toString());
-    System.out.println(expensiveTruck.toString());
-
-}
+    }
 
     static void testSuv() throws VehicleException {
 
@@ -57,6 +80,20 @@ static void testTruck() throws VehicleException {
         System.out.println(cheapSuv.toString());
         System.out.println(mediumSuv.toString());
         System.out.println(expensiveSuv.toString());
+    }
+
+    public static float sumValues(Vehicle [] vehicles){
+        float somme = 0.0f;
+        if (vehicles == null) {
+            return somme;
+        }
+        else {
+            for(Vehicle vehicle:vehicles){
+                somme += vehicle.getValue();
+            }
+        }
+
+        return somme;
     }
 
 }

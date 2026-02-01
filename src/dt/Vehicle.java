@@ -55,6 +55,10 @@ public class Vehicle {
         this.ownerAddress = ownerAddress;
     }
 
+    public float getValue() {
+        return value;
+    }
+
     @Override
     public String toString(){
         return this.ownerName + ", " + this.ownerAddress + ", " + this.brand+ ", " + this.model+ ", " + this.licencePlate
